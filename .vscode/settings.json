@@ -1,3 +1,6 @@
 {
-    "phpformatter.composer": true
+    "phpformatter.composer": true,
+    "cSpell.words": [
+        "kawana"
+    ]
 }

@@ -24,7 +24,7 @@ class 透明度を取得する extends TestCase
     /**
      * @dataProvider additionProvider岩
      */
-    public function test_2019年9月13日の岩の透明度は5m($htmlPath, $patterns, $expected)
+    public function test_岩($htmlPath, $patterns, $expected)
     {
         $html = file_get_contents(__DIR__  . $htmlPath);
         $actual = $this->oceanService->matchPatterns(Config($patterns), $html);
@@ -35,7 +35,8 @@ class 透明度を取得する extends TestCase
     {
         return [
             ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.IWA.PATTERNS', '5m'],
-            ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.IWA.PATTERNS', '8m～10m'],
+            ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.IWA.PATTERNS', '8～10m'],
+            ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.KAWANA.PATTERNS', '8～10m']
         ];
     }
 }

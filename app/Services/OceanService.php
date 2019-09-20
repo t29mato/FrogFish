@@ -31,6 +31,12 @@ class OceanService implements OceanServiceInterface
         // 「全角」英数字を「半角」に変換
         $result = mb_convert_kana($result, 'rn');
 
+        // 「?m〜?m」は「?〜?m」に変換
+        $result = str_replace("m～", "～", $result);
+
+        // m以降の文字は削除
+        $result = preg_replace("/m.+/", "m", $result);
+
         return $result;
     }
 }
