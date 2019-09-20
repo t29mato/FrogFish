@@ -22,7 +22,7 @@ class 透明度を取得する extends TestCase
     }
 
     /**
-     * @dataProvider additionProvider
+     * @dataProvider additionProvider岩
      */
     public function test_2019年9月13日の岩の透明度は5m($htmlPath, $patterns, $expected)
     {
@@ -31,7 +31,7 @@ class 透明度を取得する extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function additionProvider()
+    public function additionProvider岩()
     {
         return [
             ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.IWA.PATTERNS', '5m'],

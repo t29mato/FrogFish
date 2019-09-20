@@ -9,6 +9,8 @@ class OceanService implements OceanServiceInterface
     public function matchPatterns(array $patterns, string $subject): string
     {
         $match = '';
+
+        // 正規表現の数だけ文字を抽出する
         foreach ($patterns as $key => $pattern) {
             preg_match($pattern, $subject, $matches);
             if (isset($matches[0])) {
