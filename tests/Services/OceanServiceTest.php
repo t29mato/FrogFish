@@ -4,40 +4,67 @@ namespace Tests\Services;
 
 use Tests\TestCase;
 use app\Services\OceanService;
+use GuzzleHttp\Client;
 
-class 透明度を取得する extends TestCase
+/**
+ * 1. HTTP通信を利用して該当のウェブサイトから最新のHtmlを取得する
+ * → テスト上、Html通信はせず、実際のレスポンスを上書きする
+ * 2. HTTPのリクエストヘッダIf-Modified-Sinceが更新されている、かつHtml中の日付情報が更新されている場合は、データを更新する
+ * → ステータスコードが304の場合、400の場合、200の場合をテストする
+ * 3. データの更新はDBに行う
+ * → 実際にインメモリのDBを利用して、DBが更新されていることを確認する
+ * 4. 取得するデータは、Modified-At、日付、Html全文、透明度とする
+ * → 3. と同様の趣旨で行う
+ * 5. 日付と透明度が正規表現を用いて正しく取得できていることを確認する
+ */
+class OceanServiceTest extends TestCase
 {
     /**
-     *
      * @var OceanService
      * @return void
      */
 
     private $oceanService;
+    private $httpClient;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->oceanService = new OceanService();
+        $this->httpClient = new Client();
+    }
+
+    public function test_execute()
+    {
+        $this->oceanService->execute();
+        $this->assertEquals('hoge', 'hoge');
     }
 
     /**
-     * @dataProvider additionProvider岩
+     * @dataProvider additionProviderポイント
      */
-    public function test_岩($htmlPath, $patterns, $expected)
+    public function test_matchPatterns($htmlPath, $patterns, $expected)
     {
+        // PrivateメソッドをテストするためにReflection導入
+        // https://qiita.com/penton310/items/6b437061391016179631
+        $reflection = new \ReflectionClass($this->oceanService);
+        $matchPatternsFunction = $reflection->getMethod('matchPatterns');
+        $matchPatternsFunction->setAccessible(true);
+
         $html = file_get_contents(__DIR__  . $htmlPath);
-        $actual = $this->oceanService->matchPatterns(Config($patterns), $html);
+        $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
         $this->assertEquals($expected, $actual);
     }
 
-    public function additionProvider岩()
+    public function additionProviderポイント()
     {
         return [
             ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.IWA.PATTERNS', '5m'],
             ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.IWA.PATTERNS', '8～10m'],
+            ['/SampleHtml/Iwa/2019-10-06.html', 'ocean.IWA.PATTERNS', '3～5m'],
             ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
             ['/SampleHtml/Kawana/2019-09-21.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
+            ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
         ];
     }
 }

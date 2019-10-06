@@ -1,6 +1,7 @@
 <?php
 return [
     'IWA' => [
+        'ID' => 1,
         'URL' => 'http://iwadive.divingnavi.info/',
         'NAME' => '岩',
         'PATTERNS' => [
@@ -9,6 +10,7 @@ return [
         ]
     ],
     'KAWANA' => [
+        'ID' => 2,
         'URL' => 'http://www.izu-ito.jp/kawana/info.html',
         'NAME' => '川奈',
         'PATTERNS' => [
