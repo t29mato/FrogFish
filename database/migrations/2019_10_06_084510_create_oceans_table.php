@@ -17,6 +17,7 @@ class CreateOceansTable extends Migration
             $table->integer('id')->primary();
             $table->string('name');
             $table->string('transparency');
+            $table->string('url');
             $table->timestamps();
         });
     }

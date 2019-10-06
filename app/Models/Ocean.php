@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ocean extends Model
 {
-    protected $fillable = ['name', 'transparency'];
+    protected $fillable = ['name', 'transparency', 'url'];
 }

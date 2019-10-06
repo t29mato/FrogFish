@@ -62,6 +62,7 @@ class OceanService implements OceanServiceInterface
                         'id' => $oceanMaster['ID'],
                         'name' => $name,
                         'transparency' => $transparency,
+                        'url' => $oceanMaster['URL']
                     ])->wasRecentlyCreated;
 
                 if ($wasRecentlyCreated) {
