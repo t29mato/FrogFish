@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Services;
+namespace App\Services;
 
 /**
  * Fetchを用いて指定されたURLのHTMLから正規表現置換と文字列置換を用いて透明度を抽出する

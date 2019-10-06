@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use app\Services\OceanService;
+use App\Services\OceanService;
 
 class OceanServiceCommand extends Command
 {

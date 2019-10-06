@@ -3,7 +3,7 @@
 namespace Tests\Services;
 
 use Tests\TestCase;
-use app\Services\OceanService;
+use App\Services\OceanService;
 use GuzzleHttp\Client;
 
 /**
