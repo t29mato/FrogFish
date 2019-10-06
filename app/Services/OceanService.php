@@ -4,10 +4,15 @@ namespace app\Services;
 
 use app\Services\OceanServiceInterface;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Config;
+use GuzzleHttp\HandlerStack;
+use Kevinrob\GuzzleCache\CacheMiddleware;
+
+use Illuminate\Support\Facades\Cache;
+use Kevinrob\GuzzleCache\Strategy\PrivateCacheStrategy;
+use Kevinrob\GuzzleCache\Storage\LaravelCacheStorage;
+
 use App\Ocean;
 use App\OceanHistory;
-use Illuminate\Support\Facades\DB;
 
 /**
  * HTTP通信を利用して該当のウェブサイトから最新のHtmlを取得する
@@ -19,37 +24,51 @@ class OceanService implements OceanServiceInterface
 
     function __construct()
     {
-        $this->httpClient = new Client();
+        // https://github.com/guzzle/guzzle/issues/1905#issuecomment-325611336
+        // 304エラーの時に処理をより早く終了するためにいれたが、実際に304が返ってきたのは確認できていない。(200しか返ってこない)
+        $stack = HandlerStack::create();
+        $stack->push(
+            new CacheMiddleware(
+                new PrivateCacheStrategy(
+                    new LaravelCacheStorage(
+                        Cache::store('redis')
+                    )
+                )
+            ),
+            'cache'
+        );
+        $this->httpClient = new Client(['handler' => $stack]);
     }
 
     public function execute(): void
     {
-        foreach (Config('ocean') as $name => $ocean) {
-            $response = $this->httpClient->request('GET', $ocean['URL'], [
-                'Content-type' => 'text/xml;charset="utf-8"',
-            ]);
-            $bodyStr = mb_convert_encoding($response->getBody()->getContents(), "utf-8", "sjis");
-
-            // TODO: 304の場合はデータの更新がないので処理を終了する
-            // if ($response->getStatusCode() === 304) {
-            //     \Log::info('ステータスコード304のため処理を終了');
-            //     return;
-            // }
-
-            $transparency = $this->matchPatterns($ocean['PATTERNS'], $bodyStr);
+        foreach (Config('ocean') as $name => $oceanMaster) {
             try {
-                $wasRecentlyCreated = Ocean::where('id', $ocean['ID'])
+                $response = $this->httpClient->request('GET', $oceanMaster['URL'], [
+                    'Content-type' => 'text/xml;charset="utf-8"',
+                ]);
+
+                $bodyStr = mb_convert_encoding($response->getBody()->getContents(), "utf-8", "sjis");
+
+                if ($response->getStatusCode() === 304) {
+                    \Log::info('[非更新] 304 ' . $name);
+                    return;
+                }
+
+                $transparency = $this->matchPatterns($oceanMaster['PATTERNS'], $bodyStr);
+
+                $wasRecentlyCreated = Ocean::where('id', $oceanMaster['ID'])
                     ->updateOrCreate([
-                        'id' => $ocean['ID'],
+                        'id' => $oceanMaster['ID'],
                         'name' => $name,
-                        'transparency' => $transparency
+                        'transparency' => $transparency,
                     ])->wasRecentlyCreated;
 
                 if ($wasRecentlyCreated) {
                     OceanHistory::create([
-                        'ocean_id' => $ocean['ID'],
+                        'ocean_id' => $oceanMaster['ID'],
                         'transparency' => $transparency,
-                        'raw_html' => $bodyStr
+                        'raw_html' => $bodyStr,
                     ]);
                     \Log::info('[更新] ' . $name);
                 }
