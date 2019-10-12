@@ -104,7 +104,12 @@ class OceanService implements OceanServiceInterface
         }
 
         $match = $this->trimString($match);
-        return $match;
+
+        if (preg_match("/[0-9]/", $match)) {
+            return $match;
+        } else {
+            return '-';
+        }
     }
 
 

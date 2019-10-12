@@ -41,6 +41,17 @@ class OceanServiceTest extends TestCase
     }
 
     /**
+     * 前提: データベースがゼロの状態(インメモリのDB利用)
+     * 1. MasterのOceanレコードが作成される
+     * 2. Htmlの情報を読み取って、海履歴が作れる
+     * 3. Htmlの透明度に更新情報があれば、海履歴と海マスタの透明度が更新される
+     * 4. 更新に合わせてupdated_atも更新される
+     */
+
+    public function test_海況データの更新()
+    { }
+
+    /**
      * @dataProvider additionProviderポイント
      */
     public function test_matchPatterns($htmlPath, $patterns, $expected)
@@ -63,10 +74,12 @@ class OceanServiceTest extends TestCase
             ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.IWA.PATTERNS', '8～10m'],
             ['/SampleHtml/Iwa/2019-10-06.html', 'ocean.IWA.PATTERNS', '3～5m'],
             ['/SampleHtml/Iwa/2019-10-07.html', 'ocean.IWA.PATTERNS', '3～5m'],
+            ['/SampleHtml/Iwa/2019-10-10.html', 'ocean.IWA.PATTERNS', '3m'],
             ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
             ['/SampleHtml/Kawana/2019-09-21.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
             ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
             ['/SampleHtml/Kawana/2019-10-07.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
+            ['/SampleHtml/Kawana/2019-10-11.html', 'ocean.KAWANA.PATTERNS', '-'],
         ];
     }
 }
