@@ -56,38 +56,27 @@ class OceanService implements OceanServiceInterface
                 }
 
                 $transparency = $this->matchPatterns($oceanMaster['PATTERNS'], $bodyStr);
+                $previousOcean = Ocean::find($oceanMaster['ID']);
 
-                $wasRecentlyCreated = Ocean::where('id', $oceanMaster['ID'])
-                    ->updateOrCreate([
-                        'id' => $oceanMaster['ID'],
+                if ($transparency === $previousOcean->transparency) {
+                    \Log::info('[非更新] ' . $name);
+                } else {
+                    \Log::info('[更新] ' . $name);
+                    $ocean = Ocean::updateOrCreate([
                         'name' => $name,
                         'transparency' => $transparency,
                         'url' => $oceanMaster['URL']
-                    ])->wasRecentlyCreated;
-
-                if ($wasRecentlyCreated) {
-                    OceanHistory::create([
+                    ]);
+                    OceanHistory::updateOrCreate([
                         'ocean_id' => $oceanMaster['ID'],
                         'transparency' => $transparency,
                         'raw_html' => $bodyStr,
                     ]);
-                    \Log::info('[更新] ' . $name);
                 }
-                \Log::info('[非更新] ' . $name);
             } catch (Exception $ex) {
                 \Log::error($name . 'のデータ更新に失敗しました: ' . $ex);
             }
         }
-
-
-        // Html上の日付に変更がない場合は、データの更新がないと判断して処理を終了する
-        // $latestData = DB::('最新の日付を取得する');
-        // if ($response->body->date === $latestDate) {
-        //     return;
-        // }
-
-        // データの更新を行う
-        // 終了
     }
 
     private function matchPatterns(array $patterns, string $subject): string
