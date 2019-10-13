@@ -24,5 +24,14 @@ return [
         'PATTERNS' => [
             '@<td nowrap>ビーチ</td>([\s\S]*?)</tr>@s',
         ]
+    ],
+    'IOP' => [
+        'ID' => 4,
+        'URL' => 'https://iop-dc.com',
+        'NAME' => '伊豆海洋公園',
+        'PATTERNS' => [
+            '@<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>@',
+            '@昨日([\s\S]*?)$@',
+        ]
     ]
 ];

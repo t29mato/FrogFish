@@ -93,7 +93,12 @@ class OceanService implements OceanServiceInterface
             if (isset($matches[0])) {
                 $subject = $matches[0];
             }
-            $match = $matches[1];
+            if (isset($matches[1])) {
+                $match = $matches[1];
+            } else {
+                // HACK: まとめてリファクタするときに修正するので一旦忘れる
+                $match = '';
+            }
         }
 
         $match = $this->trimString($match);
