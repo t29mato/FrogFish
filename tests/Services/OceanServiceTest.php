@@ -48,9 +48,6 @@ class OceanServiceTest extends TestCase
      * 4. 更新に合わせてupdated_atも更新される
      */
 
-    public function test_海況データの更新()
-    { }
-
     /**
      * @dataProvider additionProviderポイント
      */
