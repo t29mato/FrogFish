@@ -57,8 +57,7 @@ class OceanService implements OceanServiceInterface
 
                 $transparency = $this->matchPatterns($oceanMaster['PATTERNS'], $bodyStr);
                 $previousOcean = Ocean::find($oceanMaster['ID']);
-
-                if ($transparency === $previousOcean->transparency) {
+                if ($previousOcean && $transparency === $previousOcean->transparency) {
                     \Log::info('[非更新] ' . $name);
                 } else {
                     \Log::info('[更新] ' . $name);
