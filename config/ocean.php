@@ -36,7 +36,6 @@ return [
             '@<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>@',
             '@昨日([\s\S]*?)$@',
         ],
-        'characterCode' => 'sjis'
     ],
     'IZUOSHIMA' => [
         'ID' => 5,
@@ -46,6 +45,5 @@ return [
             '@<div class="contenttext">([\s\S]*?)ｍ@s',
             '@透明度([\s\S]*?)$@s',
         ],
-        'characterCode' => 'sjis'
     ]
 ];

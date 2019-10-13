@@ -48,7 +48,10 @@ class OceanService implements OceanServiceInterface
                     'Content-Type' => 'text/html; charset=UTF-8',
                 ]);
 
-                $bodyStr = mb_convert_encoding($response->getBody()->getContents(), "UTF-8", $oceanMaster['characterCode']);
+                $bodyStr = $response->getBody()->getContents();
+                if (isset($oceanMaster['characterCode'])) {
+                    $bodyStr = mb_convert_encoding($bodyStr, "UTF-8", $oceanMaster['characterCode']);
+                }
 
                 if ($response->getStatusCode() === 304) {
                     \Log::info('[非更新] 304 ' . $name);
