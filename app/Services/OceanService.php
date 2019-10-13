@@ -62,11 +62,16 @@ class OceanService implements OceanServiceInterface
                 } else {
                     \Log::info('[更新] ' . $name);
                     $ocean = Ocean::updateOrCreate([
-                        'name' => $name,
+                        'id' => $oceanMaster['ID']
+                    ], [
+                        'name' => $oceanMaster['NAME'],
                         'transparency' => $transparency,
                         'url' => $oceanMaster['URL']
                     ]);
-                    OceanHistory::updateOrCreate([
+                    $ocean->transparency = $transparency;
+                    $ocean->save();
+
+                    OceanHistory::create([
                         'ocean_id' => $oceanMaster['ID'],
                         'transparency' => $transparency,
                         'raw_html' => $bodyStr,
