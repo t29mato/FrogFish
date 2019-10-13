@@ -128,6 +128,9 @@ class OceanService implements OceanServiceInterface
         // m以降の文字は削除
         $result = preg_replace("/m.+/", "m", $result);
 
+        // 「：」削除
+        $result = str_replace("：", "", $result);
+
         return $result;
     }
 }
