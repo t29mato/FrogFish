@@ -45,10 +45,10 @@ class OceanService implements OceanServiceInterface
         foreach (Config('ocean') as $name => $oceanMaster) {
             try {
                 $response = $this->httpClient->request('GET', $oceanMaster['URL'], [
-                    'Content-type' => 'text/xml;charset="utf-8"',
+                    'Content-Type' => 'text/html; charset=UTF-8',
                 ]);
 
-                $bodyStr = mb_convert_encoding($response->getBody()->getContents(), "utf-8", "sjis");
+                $bodyStr = mb_convert_encoding($response->getBody()->getContents(), "UTF-8", $oceanMaster['characterCode']);
 
                 if ($response->getStatusCode() === 304) {
                     \Log::info('[非更新] 304 ' . $name);

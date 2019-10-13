@@ -7,7 +7,8 @@ return [
         'PATTERNS' => [
             '@岩の今日の海況([\s\S]*?)</table>@',
             '@透視度([\s\S]*?)<br />@',
-        ]
+        ],
+        'characterCode' => 'sjis'
     ],
     'KAWANA' => [
         'ID' => 2,
@@ -15,7 +16,8 @@ return [
         'NAME' => '川奈',
         'PATTERNS' => [
             '@ビーチ ： ([\s\S]*?)br@',
-        ]
+        ],
+        'characterCode' => 'sjis'
     ],
     'FUTO' => [
         'ID' => 3,
@@ -23,7 +25,8 @@ return [
         'NAME' => '富戸',
         'PATTERNS' => [
             '@<td nowrap>ビーチ</td>([\s\S]*?)</tr>@s',
-        ]
+        ],
+        'characterCode' => 'sjis'
     ],
     'IOP' => [
         'ID' => 4,
@@ -32,6 +35,17 @@ return [
         'PATTERNS' => [
             '@<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>@',
             '@昨日([\s\S]*?)$@',
-        ]
+        ],
+        'characterCode' => 'sjis'
+    ],
+    'IZUOSHIMA' => [
+        'ID' => 5,
+        'URL' => 'https://izuohshima-diving.com/divelog/',
+        'NAME' => '伊豆大島',
+        'PATTERNS' => [
+            '@<div class="contenttext">([\s\S]*?)ｍ@s',
+            '@透明度([\s\S]*?)$@s',
+        ],
+        'characterCode' => 'sjis'
     ]
 ];
