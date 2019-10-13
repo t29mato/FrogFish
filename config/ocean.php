@@ -16,5 +16,13 @@ return [
         'PATTERNS' => [
             '@ビーチ ： ([\s\S]*?)br@',
         ]
+    ],
+    'FUTO' => [
+        'ID' => 3,
+        'URL' => 'http://www.izu-ito.jp/futo/info.html',
+        'NAME' => '富戸',
+        'PATTERNS' => [
+            '@<td nowrap>ビーチ</td>([\s\S]*?)</tr>@s',
+        ]
     ]
 ];

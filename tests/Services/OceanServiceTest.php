@@ -80,6 +80,7 @@ class OceanServiceTest extends TestCase
             ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
             ['/SampleHtml/Kawana/2019-10-07.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
             ['/SampleHtml/Kawana/2019-10-11.html', 'ocean.KAWANA.PATTERNS', '-'],
+            ['/SampleHtml/Futo/2019-10-13.html', 'ocean.FUTO.PATTERNS', '-'],
         ];
     }
 }
