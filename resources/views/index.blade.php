@@ -65,28 +65,9 @@
             </span>
           </a>
           @endforeach
-
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">ポイント名</th>
-              <th scope="col">透明度</th>
-              <th scope="col">最終更新日時</th>
-              <th scope="col">ホームページ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <h1 class="bd-title">関東透明度マップ</h1>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
 </body>
-
 </html>
