@@ -8,7 +8,11 @@ return [
             '@岩の今日の海況([\s\S]*?)</table>@',
             '@透視度([\s\S]*?)<br />@',
         ],
-        'characterCode' => 'sjis'
+        'characterCode' => 'sjis',
+        'CSS' => [
+            'top' => '18%',
+            'left' => '60%',
+        ]
     ],
     'KAWANA' => [
         'ID' => 2,
@@ -17,16 +21,26 @@ return [
         'PATTERNS' => [
             '@ビーチ ： ([\s\S]*?)br@',
         ],
-        'characterCode' => 'sjis'
+        'characterCode' => 'sjis',
+        'CSS' => [
+            'top' => '45%',
+            'left' => '56%',
+        ]
     ],
     'FUTO' => [
         'ID' => 3,
         'URL' => 'http://www.izu-ito.jp/futo/info.html',
         'NAME' => '富戸',
         'PATTERNS' => [
-            '@<td nowrap>ビーチ</td>([\s\S]*?)</tr>@s',
+            '@<td nowrap>ビーチ</td>([\s\S]*?)</td></tr>@',
+            '@<td nowrap>[0-9]([\s\S]*?)</td></tr>@',
+            '@<td nowrap>([\s\S]*?)</td></tr>@',
         ],
-        'characterCode' => 'sjis'
+        'characterCode' => 'sjis',
+        'CSS' => [
+            'top' => '53%',
+            'left' => '55%',
+        ]
     ],
     'IOP' => [
         'ID' => 4,
@@ -36,6 +50,10 @@ return [
             '@<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>@',
             '@　([\s\S]*?)</dd>@',
         ],
+        'CSS' => [
+            'top' => '59%',
+            'left' => '54%',
+        ]
     ],
     'IZUOSHIMA' => [
         'ID' => 5,
@@ -45,5 +63,9 @@ return [
             '@<div class="contenttext">([\s\S]*?)ｍ@s',
             '@透明度([\s\S]*?)$@s',
         ],
+        'CSS' => [
+            'top' => '71%',
+            'left' => '81%',
+        ]
     ]
 ];

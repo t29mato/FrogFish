@@ -42,7 +42,7 @@ class OceanService implements OceanServiceInterface
 
     public function execute(): void
     {
-        foreach (Config('ocean') as $name => $oceanMaster) {
+        foreach (Config('ocean') as $key => $oceanMaster) {
             try {
                 $response = $this->httpClient->request('GET', $oceanMaster['URL'], [
                     'Content-Type' => 'text/html; charset=UTF-8',
@@ -54,19 +54,20 @@ class OceanService implements OceanServiceInterface
                 }
 
                 if ($response->getStatusCode() === 304) {
-                    \Log::info('[非更新] 304 ' . $name);
+                    \Log::info('[非更新] 304 ' . $key);
                     return;
                 }
 
                 $transparency = $this->matchPatterns($oceanMaster['PATTERNS'], $bodyStr);
                 $previousOcean = Ocean::find($oceanMaster['ID']);
                 if ($previousOcean && $transparency === $previousOcean->transparency) {
-                    \Log::info('[非更新] ' . $name);
+                    \Log::info('[非更新] ' . $key);
                 } else {
-                    \Log::info('[更新] ' . $name);
+                    \Log::info('[更新] ' . $key);
                     $ocean = Ocean::updateOrCreate([
                         'id' => $oceanMaster['ID']
                     ], [
+                        'key' => $key,
                         'name' => $oceanMaster['NAME'],
                         'transparency' => $transparency,
                         'url' => $oceanMaster['URL']

@@ -15,6 +15,7 @@ class CreateOceansTable extends Migration
     {
         Schema::create('oceans', function (Blueprint $table) {
             $table->integer('id')->primary();
+            $table->string('key');
             $table->string('name');
             $table->string('transparency');
             $table->string('url');
