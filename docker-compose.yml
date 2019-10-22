@@ -30,19 +30,3 @@ services:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     environment:
       - TZ=${TZ}
-
-  db:
-    image: mysql:8.0
-    volumes:
-      - db-store:/var/lib/mysql
-      - ./logs:/var/log/mysql
-      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-    environment:
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_USER=${DB_USERNAME}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-      - TZ=${TZ}
-
-volumes:
-  db-store:
