@@ -56,6 +56,13 @@
     <div class="row">
       <div class="col-lg-6 offset-lg-3">
         <h1>伊豆半島周辺の透明度マップ</h1>
+        @if ($environment === 'local')
+        <p>ローカル環境</p>
+        @elseif ($environment === 'develop')
+        <p>ローカル環境</p>
+        @else
+        {{-- Production --}}
+        @endif
         <div class="photo">
           <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto.png') }}" />
           @foreach ($oceanFormated as $ocean)

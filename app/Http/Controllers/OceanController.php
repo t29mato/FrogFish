@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ocean;
+use Illuminate\Support\Facades\App;
 
 class OceanController extends Controller
 {
@@ -21,6 +22,10 @@ class OceanController extends Controller
                 'css_left' => Config('ocean')[$ocean->key]['CSS']['left'],
             ]);
         }
-        return view('index', ['oceanFormated' => $oceanFormated]);
+
+        return view('index', [
+            'oceanFormated' => $oceanFormated,
+            'environment' => App::environment()
+        ]);
     }
 }
