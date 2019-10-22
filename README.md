@@ -3,14 +3,25 @@
 - Composer 1.8.6
 
 # 環境構築
+## 初期設定
 ```
 $ docker-compose up --build
 $ docker-compose exec app composer install
 $ docker-compose exec app php artisan migrate
 $ touch database/database.sqlite
 ```
-# 環境構築 (トラブルシュート)
-## storage配下がPermission Deniedになる時
+
+## cron設定
+```
+$ docker-compose exec app ash
+/work $ crond -l 1 -b
+/work $ crontab -e
+# min   hour    day     month   weekday command
+*/15    *       *       *       *       php /work/artisan oceanService:execute
+```
+
+## トラブルシュート
+### storage配下がPermission Deniedになる時
 ```
 $ chmod -R 777 logs
 $ chmod -R 777 storage/logs
