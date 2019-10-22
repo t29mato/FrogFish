@@ -14,7 +14,7 @@ class CreateOceansTable extends Migration
     public function up()
     {
         Schema::create('oceans', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->increments('id');
             $table->string('key');
             $table->string('name');
             $table->string('transparency');

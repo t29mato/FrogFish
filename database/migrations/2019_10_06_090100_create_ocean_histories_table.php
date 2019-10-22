@@ -15,9 +15,9 @@ class CreateOceanHistoriesTable extends Migration
     {
         Schema::create('ocean_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('ocean_id');
+            $table->unsignedInteger('ocean_id');
             $table->string('transparency');
-            $table->string('raw_html');
+            $table->mediumText('raw_html');
             $table->timestamps();
             $table->foreign('ocean_id')
                 ->references('id')
