@@ -60,7 +60,7 @@
           （ローカル環境）
           @elseif ($environment === 'develop')
           （開発環境）
-          @elsep
+          @elseif
           {{-- Production --}}
           @endif
         </h2>
