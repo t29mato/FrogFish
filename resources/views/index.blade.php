@@ -66,11 +66,9 @@
         <div class="photo">
           <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto.png') }}" />
           @foreach ($oceanFormated as $ocean)
-          <a href="{{ $ocean['url'] }}" target="_blank">
-            <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip" title="更新日：{{ $ocean['updated_at'] }}">
-              <button class="text" style="pointer-events: none;" type="button" disabled>{{ $ocean['name'] }} {{ $ocean['transparency'] }}</button>
-            </span>
-          </a>
+          <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip" title="{{ $ocean['name'] }}：{{ $ocean['updated_at'] }}">
+            <button class="text" style="pointer-events: none;" type="button" disabled>{{ $ocean['transparency'] }}</button>
+          </span>
           @endforeach
         </div>
       </div>
@@ -80,6 +78,11 @@
     <div class="row">
       <div class="col-lg-6">
         <p style="text-align: center;">更新のタイミング：15分おきに更新しています</p>
+        <p style="text-align: center;">参照しているホームページ：
+          @foreach ($oceanFormated as $ocean)
+          <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] }}　</a>
+          @endforeach
+        </p>
         <p></p>
         <p style="text-align: center;">お問い合わせ先：<a href="https://twitter.com/umineco2019" target="_blank" rel="noopener">@umineco2019</a></p>
       </div>
