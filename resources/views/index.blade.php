@@ -69,5 +69,14 @@
       </div>
     </div>
   </div>
+  <footer class="bd-footer text-muted">
+    <div class="row">
+      <div class="col-lg-6">
+        <p style="text-align: center;">更新のタイミング：15分おきに更新しています</p>
+        <p></p>
+        <p style="text-align: center;">お問い合わせ先：<a href="https://twitter.com/umineco2019" target="_blank" rel="noopener">@umineco2019</a></p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
