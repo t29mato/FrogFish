@@ -3,7 +3,7 @@ LABEL maintainer "t2kmato"
 
 ARG TZ
 ENV COMPOSER_ALLOW_SUPERUSER 1
-ENV COMPOSER_HOME /COMPOSER_ALLOW_SUPERUSER
+ENV COMPOSER_HOME /composer
 
 RUN set -eux && \
   apk add --update-cache --no-cache --virtual=.build-dependencies tzdata && \
