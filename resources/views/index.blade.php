@@ -55,14 +55,15 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 offset-lg-3">
-        <h1>伊豆半島周辺の透明度マップ</h1>
-        @if ($environment === 'local')
-        <p>ローカル環境</p>
-        @elseif ($environment === 'develop')
-        <p>こちらの環境は開発環境です。</p>
-        @else
-        {{-- Production --}}
-        @endif
+        <h2>伊豆半島周辺の透明度マップ
+          @if ($environment === 'local')
+          （ローカル環境）
+          @elseif ($environment === 'develop')
+          （開発環境）
+          @elsep
+          {{-- Production --}}
+          @endif
+        </h2>
         <div class="photo">
           <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto.png') }}" />
           @foreach ($oceanFormated as $ocean)
