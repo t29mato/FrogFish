@@ -13,3 +13,6 @@ RUN set -eux && \
   curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo
+
+# cronのdaemonを起動(log level=1, foreground)
+CMD crond -l 1 -f
