@@ -59,7 +59,7 @@
         @if ($environment === 'local')
         <p>ローカル環境</p>
         @elseif ($environment === 'develop')
-        <p>ローカル環境</p>
+        <p>こちらの環境は開発環境です。</p>
         @else
         {{-- Production --}}
         @endif
