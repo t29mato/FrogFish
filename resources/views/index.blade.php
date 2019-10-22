@@ -60,8 +60,8 @@
           <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto.png') }}" />
           @foreach ($oceanFormated as $ocean)
           <a href="{{ $ocean['url'] }}" target="_blank">
-            <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip" title={{ $ocean['name'] }}>
-              <button class="text" style="pointer-events: none;" type="button" disabled>{{ $ocean['transparency'] }}</button>
+            <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip">
+              <button class="text" style="pointer-events: none;" type="button" disabled>{{ $ocean['name'] }} {{ $ocean['transparency'] }}</button>
             </span>
           </a>
           @endforeach
