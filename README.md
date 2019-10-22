@@ -4,11 +4,17 @@
 
 # 環境構築
 ```
-$ cd /project/root/path
-$ composer install
-$ php ./artisan key:generate
-$ php ./artisan migrate
-$ php ./artisan db:seed
+$ docker-compose up --build
+$ docker-compose exec app composer install
+$ docker-compose exec app php artisan migrate
+$ touch database/database.sqlite
+```
+# 環境構築 (トラブルシュート)
+## storage配下がPermission Deniedになる時
+```
+$ chmod -R 777 logs
+$ chmod -R 777 storage/logs
+$ chmod -R 777 storage/framework
 ```
 
 # テスト
