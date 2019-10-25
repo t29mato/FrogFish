@@ -115,9 +115,9 @@ class OceanServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider additionProviderポイント
+     * @dataProvider additionProviderポイント_OSEZAKI
      */
-    public function test_matchPatterns($htmlPath, $patterns, $expected)
+    public function test_matchPatterns_OSEZAKI($htmlPath, $patterns, $expected)
     {
         // PrivateメソッドをテストするためにReflection導入
         // https://qiita.com/penton310/items/6b437061391016179631
@@ -174,6 +174,13 @@ class OceanServiceTest extends TestCase
         return [
             ['/SampleHtml/IzuOshima/2019-10-09.html', 'ocean.IZUOSHIMA.PATTERNS', '12～15m'],
             ['/SampleHtml/IzuOshima/2019-10-13.html', 'ocean.IZUOSHIMA.PATTERNS', '15m'],
+        ];
+    }
+
+    public function additionProviderポイント_OSEZAKI()
+    {
+        return [
+            ['/SampleHtml/Osezaki/2019-10-23.html', 'ocean.OSEZAKI.PATTERNS', '3～8m'],
         ];
     }
 }

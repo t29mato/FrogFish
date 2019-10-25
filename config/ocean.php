@@ -67,5 +67,18 @@ return [
             'top' => '71%',
             'left' => '81%',
         ]
+    ],
+    'OSEZAKI' => [
+        'ID' => 6,
+        'URL' => 'http://www.cocomo-ds.net/p4-1.html',
+        'NAME' => '大瀬崎',
+        'PATTERNS' => [
+            '@<b>透視度</b>([\s\S]*?)<td><b>気温</b></td>@s',
+            '@<td>([\s\S]*?)</td>@',
+        ],
+        'CSS' => [
+            'top' => '71%',
+            'left' => '81%',
+        ]
     ]
 ];
