@@ -58,7 +58,7 @@ class OceanService implements OceanServiceInterface
                     return;
                 }
 
-                $transparency = $this->matchPatterns($oceanMaster['PATTERNS'], $bodyStr);
+                $transparency = $this->matchPatterns($oceanMaster['patterns'], $bodyStr);
                 $previousOcean = Ocean::find($oceanMaster['ID']);
                 if ($previousOcean && $transparency === $previousOcean->transparency) {
                     \Log::info('[非更新] ' . $key);
@@ -68,7 +68,7 @@ class OceanService implements OceanServiceInterface
                         'id' => $oceanMaster['ID']
                     ], [
                         'key' => $key,
-                        'name' => $oceanMaster['NAME'],
+                        'name' => $oceanMaster['name'],
                         'transparency' => $transparency,
                         'url' => $oceanMaster['URL']
                     ]);

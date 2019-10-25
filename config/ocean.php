@@ -1,10 +1,10 @@
 <?php
 return [
-    'IWA' => [
+    'Iwa' => [
         'ID' => 1,
         'URL' => 'http://iwadive.divingnavi.info/',
-        'NAME' => '岩',
-        'PATTERNS' => [
+        'name' => '岩',
+        'patterns' => [
             '@岩の今日の海況([\s\S]*?)</table>@',
             '@透視度([\s\S]*?)<br />@',
         ],
@@ -14,11 +14,11 @@ return [
             'left' => '60%',
         ]
     ],
-    'KAWANA' => [
+    'Kawana' => [
         'ID' => 2,
         'URL' => 'http://www.izu-ito.jp/kawana/info.html',
-        'NAME' => '川奈',
-        'PATTERNS' => [
+        'name' => '川奈',
+        'patterns' => [
             '@ビーチ ： ([\s\S]*?)br@',
         ],
         'characterCode' => 'sjis',
@@ -27,11 +27,11 @@ return [
             'left' => '56%',
         ]
     ],
-    'FUTO' => [
+    'Futo' => [
         'ID' => 3,
         'URL' => 'http://www.izu-ito.jp/futo/info.html',
-        'NAME' => '富戸',
-        'PATTERNS' => [
+        'name' => '富戸',
+        'patterns' => [
             '@<td nowrap>ビーチ</td>([\s\S]*?)</td></tr>@',
             '@<td nowrap>[0-9]([\s\S]*?)</td></tr>@',
             '@<td nowrap>([\s\S]*?)</td></tr>@',
@@ -45,8 +45,8 @@ return [
     'IOP' => [
         'ID' => 4,
         'URL' => 'https://iop-dc.com',
-        'NAME' => '伊豆海洋公園',
-        'PATTERNS' => [
+        'name' => '伊豆海洋公園',
+        'patterns' => [
             '@<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>@',
             '@　([\s\S]*?)</dd>@',
         ],
@@ -55,11 +55,11 @@ return [
             'left' => '54%',
         ]
     ],
-    'IZUOSHIMA' => [
+    'IzuOshima' => [
         'ID' => 5,
         'URL' => 'https://izuohshima-diving.com/divelog/',
-        'NAME' => '伊豆大島',
-        'PATTERNS' => [
+        'name' => '伊豆大島',
+        'patterns' => [
             '@<div class="contenttext">([\s\S]*?)ｍ@s',
             '@透明度([\s\S]*?)$@s',
         ],
@@ -68,11 +68,11 @@ return [
             'left' => '74%',
         ]
     ],
-    'OSEZAKI' => [
+    'Osezaki' => [
         'ID' => 6,
         'URL' => 'http://www.cocomo-ds.net/p4-1.html',
-        'NAME' => '大瀬崎',
-        'PATTERNS' => [
+        'name' => '大瀬崎',
+        'patterns' => [
             '@<b>透視度</b>([\s\S]*?)<td><b>気温</b></td>@s',
             '@<td>([\s\S]*?)</td>@',
         ],
@@ -81,11 +81,11 @@ return [
             'left' => '10%',
         ]
     ],
-    'KUMOMI' => [
+    'Kumomi' => [
         'ID' => 7,
         'URL' => 'http://kumomi-hamayu.com/sealogs/',
-        'NAME' => '雲見',
-        'PATTERNS' => [
+        'name' => '雲見',
+        'patterns' => [
             '@<th class="rightTh">透視度:</th>([\s\S]*?)</td>@s',
             '@<td>([\s\S]*?)</td>@',
         ],

@@ -53,11 +53,11 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_IWA()
     {
         return [
-            ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.IWA.PATTERNS', '5m'],
-            ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.IWA.PATTERNS', '8～10m'],
-            ['/SampleHtml/Iwa/2019-10-06.html', 'ocean.IWA.PATTERNS', '3～5m'],
-            ['/SampleHtml/Iwa/2019-10-07.html', 'ocean.IWA.PATTERNS', '3～5m'],
-            ['/SampleHtml/Iwa/2019-10-10.html', 'ocean.IWA.PATTERNS', '3m'],
+            ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.Iwa.patterns', '5m'],
+            ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.Iwa.patterns', '8～10m'],
+            ['/SampleHtml/Iwa/2019-10-06.html', 'ocean.Iwa.patterns', '3～5m'],
+            ['/SampleHtml/Iwa/2019-10-07.html', 'ocean.Iwa.patterns', '3～5m'],
+            ['/SampleHtml/Iwa/2019-10-10.html', 'ocean.Iwa.patterns', '3m'],
         ];
     }
 
@@ -80,11 +80,11 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_KAWANA()
     {
         return [
-            ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
-            ['/SampleHtml/Kawana/2019-09-21.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
-            ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
-            ['/SampleHtml/Kawana/2019-10-07.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
-            ['/SampleHtml/Kawana/2019-10-11.html', 'ocean.KAWANA.PATTERNS', '-'],
+            ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.Kawana.patterns', '8～10m'],
+            ['/SampleHtml/Kawana/2019-09-21.html', 'ocean.Kawana.patterns', '8～10m'],
+            ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.Kawana.patterns', '5～8m'],
+            ['/SampleHtml/Kawana/2019-10-07.html', 'ocean.Kawana.patterns', '5～8m'],
+            ['/SampleHtml/Kawana/2019-10-11.html', 'ocean.Kawana.patterns', '-'],
         ];
     }
 
@@ -107,8 +107,8 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_FUTO()
     {
         return [
-            ['/SampleHtml/Futo/2019-10-13.html', 'ocean.FUTO.PATTERNS', '-'],
-            ['/SampleHtml/Futo/2019-10-19.html', 'ocean.FUTO.PATTERNS', '5〜8m'],
+            ['/SampleHtml/Futo/2019-10-13.html', 'ocean.Futo.patterns', '-'],
+            ['/SampleHtml/Futo/2019-10-19.html', 'ocean.Futo.patterns', '5〜8m'],
         ];
     }
 
@@ -131,9 +131,9 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_IOP()
     {
         return [
-            ['/SampleHtml/IOP/2019-10-01.html', 'ocean.IOP.PATTERNS', '10～15m'],
-            ['/SampleHtml/IOP/2019-10-13.html', 'ocean.IOP.PATTERNS', '-'],
-            ['/SampleHtml/IOP/2019-10-20.html', 'ocean.IOP.PATTERNS', '10m'],
+            ['/SampleHtml/IOP/2019-10-01.html', 'ocean.IOP.patterns', '10～15m'],
+            ['/SampleHtml/IOP/2019-10-13.html', 'ocean.IOP.patterns', '-'],
+            ['/SampleHtml/IOP/2019-10-20.html', 'ocean.IOP.patterns', '10m'],
         ];
     }
 
@@ -156,8 +156,8 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_IZUOSHIMA()
     {
         return [
-            ['/SampleHtml/IzuOshima/2019-10-09.html', 'ocean.IZUOSHIMA.PATTERNS', '12～15m'],
-            ['/SampleHtml/IzuOshima/2019-10-13.html', 'ocean.IZUOSHIMA.PATTERNS', '15m'],
+            ['/SampleHtml/IzuOshima/2019-10-09.html', 'ocean.IzuOshima.patterns', '12～15m'],
+            ['/SampleHtml/IzuOshima/2019-10-13.html', 'ocean.IzuOshima.patterns', '15m'],
         ];
     }
 
@@ -180,7 +180,7 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_OSEZAKI()
     {
         return [
-            ['/SampleHtml/Osezaki/2019-10-23.html', 'ocean.OSEZAKI.PATTERNS', '3～8m'],
+            ['/SampleHtml/Osezaki/2019-10-23.html', 'ocean.Osezaki.patterns', '3～8m'],
         ];
     }
 
@@ -203,7 +203,7 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_KUMOMI()
     {
         return [
-            ['/SampleHtml/Kumomi/2019-10-25.html', 'ocean.KUMOMI.PATTERNS', '12～15m'],
+            ['/SampleHtml/Kumomi/2019-10-25.html', 'ocean.Kumomi.patterns', '12～15m'],
         ];
     }
 }
