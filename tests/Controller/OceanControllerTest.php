@@ -34,15 +34,15 @@ class OceanControllerTest extends TestCase
         $transparencyCast2integerFunction = $reflection->getMethod('transparencyCast2integer');
         $transparencyCast2integerFunction->setAccessible(true);
 
-        $actual = $transparencyCast2integerFunction->invoke($transparency);
+        $actual = $transparencyCast2integerFunction->invoke($this->oceanController, $transparency);
         $this->assertEquals($expected, $actual);
     }
 
     public function additionProvider透明度()
     {
         return [
-            ['-', '0'],
-            // ['3〜8m', '6'],
+            ['-', 0],
+            ['3〜8m', '6'],
             // ['10m', '10'],
             // ['10〜12m', '11'],
         ];

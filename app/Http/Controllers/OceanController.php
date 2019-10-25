@@ -28,4 +28,20 @@ class OceanController extends Controller
             'environment' => App::environment()
         ]);
     }
+
+    private function transparencyCast2integer(string $transparency)
+    {
+        $result = 0;
+        if ($transparency === '-') {
+            $result = 0;
+        } else if (strpos($transparency, '〜') !== false) {
+            preg_match('!([0-9]+)〜([0-9]+)m!', $transparency, $matches);
+            $result = round(
+                ((intval($matches[1]) + intval($matches[2])) / 2),
+                0,
+                PHP_ROUND_HALF_UP
+            );
+        }
+        return $result;
+    }
 }
