@@ -29,7 +29,7 @@ class OceanController extends Controller
         ]);
     }
 
-    private function transparencyCast2integer(string $transparency)
+    private function calculateTransparencyInt(string $transparency): int
     {
         $result = 0;
         if ($transparency === '-') {

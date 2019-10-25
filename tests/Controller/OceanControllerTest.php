@@ -31,10 +31,10 @@ class OceanControllerTest extends TestCase
         // PrivateメソッドをテストするためにReflection導入
         // https://qiita.com/penton310/items/6b437061391016179631
         $reflection = new \ReflectionClass($this->oceanController);
-        $transparencyCast2integerFunction = $reflection->getMethod('transparencyCast2integer');
-        $transparencyCast2integerFunction->setAccessible(true);
+        $calculateTransparencyIntFunction = $reflection->getMethod('calculateTransparencyInt');
+        $calculateTransparencyIntFunction->setAccessible(true);
 
-        $actual = $transparencyCast2integerFunction->invoke($this->oceanController, $transparency);
+        $actual = $calculateTransparencyIntFunction->invoke($this->oceanController, $transparency);
         $this->assertEquals($expected, $actual);
     }
 
