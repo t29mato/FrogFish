@@ -34,19 +34,85 @@ class OceanServiceTest extends TestCase
         $this->httpClient = new Client();
     }
 
-    public function test_execute()
+    /**
+     * @dataProvider additionProviderポイント_IWA
+     */
+    public function test_matchPatterns_IWA($htmlPath, $patterns, $expected)
     {
-        $this->oceanService->execute();
-        $this->assertEquals('hoge', 'hoge');
+        // PrivateメソッドをテストするためにReflection導入
+        // https://qiita.com/penton310/items/6b437061391016179631
+        $reflection = new \ReflectionClass($this->oceanService);
+        $matchPatternsFunction = $reflection->getMethod('matchPatterns');
+        $matchPatternsFunction->setAccessible(true);
+
+        $html = file_get_contents(__DIR__  . $htmlPath);
+        $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
-     * 前提: データベースがゼロの状態(インメモリのDB利用)
-     * 1. MasterのOceanレコードが作成される
-     * 2. Htmlの情報を読み取って、海履歴が作れる
-     * 3. Htmlの透明度に更新情報があれば、海履歴と海マスタの透明度が更新される
-     * 4. 更新に合わせてupdated_atも更新される
+     * @dataProvider additionProviderポイント_KAWANA
      */
+    public function test_matchPatterns_KAWANA($htmlPath, $patterns, $expected)
+    {
+        // PrivateメソッドをテストするためにReflection導入
+        // https://qiita.com/penton310/items/6b437061391016179631
+        $reflection = new \ReflectionClass($this->oceanService);
+        $matchPatternsFunction = $reflection->getMethod('matchPatterns');
+        $matchPatternsFunction->setAccessible(true);
+
+        $html = file_get_contents(__DIR__  . $htmlPath);
+        $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @dataProvider additionProviderポイント_FUTO
+     */
+    public function test_matchPatterns_FUTO($htmlPath, $patterns, $expected)
+    {
+        // PrivateメソッドをテストするためにReflection導入
+        // https://qiita.com/penton310/items/6b437061391016179631
+        $reflection = new \ReflectionClass($this->oceanService);
+        $matchPatternsFunction = $reflection->getMethod('matchPatterns');
+        $matchPatternsFunction->setAccessible(true);
+
+        $html = file_get_contents(__DIR__  . $htmlPath);
+        $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @dataProvider additionProviderポイント_IOP
+     */
+    public function test_matchPatterns_IOP($htmlPath, $patterns, $expected)
+    {
+        // PrivateメソッドをテストするためにReflection導入
+        // https://qiita.com/penton310/items/6b437061391016179631
+        $reflection = new \ReflectionClass($this->oceanService);
+        $matchPatternsFunction = $reflection->getMethod('matchPatterns');
+        $matchPatternsFunction->setAccessible(true);
+
+        $html = file_get_contents(__DIR__  . $htmlPath);
+        $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @dataProvider additionProviderポイント_IZUOSHIMA
+     */
+    public function test_matchPatterns_IZUOSHIMA($htmlPath, $patterns, $expected)
+    {
+        // PrivateメソッドをテストするためにReflection導入
+        // https://qiita.com/penton310/items/6b437061391016179631
+        $reflection = new \ReflectionClass($this->oceanService);
+        $matchPatternsFunction = $reflection->getMethod('matchPatterns');
+        $matchPatternsFunction->setAccessible(true);
+
+        $html = file_get_contents(__DIR__  . $htmlPath);
+        $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
+        $this->assertEquals($expected, $actual);
+    }
 
     /**
      * @dataProvider additionProviderポイント
@@ -64,7 +130,7 @@ class OceanServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function additionProviderポイント()
+    public function additionProviderポイント_IWA()
     {
         return [
             ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.IWA.PATTERNS', '5m'],
@@ -72,16 +138,40 @@ class OceanServiceTest extends TestCase
             ['/SampleHtml/Iwa/2019-10-06.html', 'ocean.IWA.PATTERNS', '3～5m'],
             ['/SampleHtml/Iwa/2019-10-07.html', 'ocean.IWA.PATTERNS', '3～5m'],
             ['/SampleHtml/Iwa/2019-10-10.html', 'ocean.IWA.PATTERNS', '3m'],
+        ];
+    }
+
+    public function additionProviderポイント_KAWANA()
+    {
+        return [
             ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
             ['/SampleHtml/Kawana/2019-09-21.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
             ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
             ['/SampleHtml/Kawana/2019-10-07.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
             ['/SampleHtml/Kawana/2019-10-11.html', 'ocean.KAWANA.PATTERNS', '-'],
+        ];
+    }
+
+    public function additionProviderポイント_FUTO()
+    {
+        return [
             ['/SampleHtml/Futo/2019-10-13.html', 'ocean.FUTO.PATTERNS', '-'],
             ['/SampleHtml/Futo/2019-10-19.html', 'ocean.FUTO.PATTERNS', '5〜8m'],
+        ];
+    }
+
+    public function additionProviderポイント_IOP()
+    {
+        return [
             ['/SampleHtml/IOP/2019-10-01.html', 'ocean.IOP.PATTERNS', '10～15m'],
             ['/SampleHtml/IOP/2019-10-13.html', 'ocean.IOP.PATTERNS', '-'],
             ['/SampleHtml/IOP/2019-10-20.html', 'ocean.IOP.PATTERNS', '10m'],
+        ];
+    }
+
+    public function additionProviderポイント_IZUOSHIMA()
+    {
+        return [
             ['/SampleHtml/IzuOshima/2019-10-09.html', 'ocean.IZUOSHIMA.PATTERNS', '12～15m'],
             ['/SampleHtml/IzuOshima/2019-10-13.html', 'ocean.IZUOSHIMA.PATTERNS', '15m'],
         ];
