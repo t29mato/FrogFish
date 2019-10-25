@@ -46,6 +46,7 @@ return [
         'ID' => 4,
         'URL' => 'https://iop-dc.com',
         'name' => '伊豆海洋公園',
+        'nickname' => 'IOP',
         'patterns' => [
             '@<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>@',
             '@　([\s\S]*?)</dd>@',
@@ -59,6 +60,7 @@ return [
         'ID' => 5,
         'URL' => 'https://izuohshima-diving.com/divelog/',
         'name' => '伊豆大島',
+        'nickname' => '大島',
         'patterns' => [
             '@<div class="contenttext">([\s\S]*?)ｍ@s',
             '@透明度([\s\S]*?)$@s',

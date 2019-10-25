@@ -69,6 +69,7 @@ class OceanService implements OceanServiceInterface
                     ], [
                         'key' => $key,
                         'name' => $oceanMaster['name'],
+                        'nickname' => array_key_exists('nickname', $oceanMaster) ? $oceanMaster['nickname'] : null,
                         'transparency' => $transparency,
                         'url' => $oceanMaster['URL']
                     ]);

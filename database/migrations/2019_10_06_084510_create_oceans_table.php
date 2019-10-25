@@ -17,6 +17,7 @@ class CreateOceansTable extends Migration
             $table->increments('id');
             $table->string('key');
             $table->string('name');
+            $table->string('nickname')->nullable();
             $table->string('transparency');
             $table->string('url');
             $table->timestamps();

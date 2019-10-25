@@ -14,7 +14,7 @@ class OceanController extends Controller
         $oceanFormated = [];
         foreach ($oceans as $index => $ocean) {
             array_push($oceanFormated, [
-                'name' => $ocean->name,
+                'name' => $ocean->nickname ? $ocean->nickname : $ocean->name,
                 'transparency' => $ocean->transparency,
                 'transparencyLevel' => $this->calculateTransparencyLevel(
                     $this->calculateTransparencyInt($ocean->transparency)
