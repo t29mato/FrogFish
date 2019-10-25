@@ -68,9 +68,9 @@ class OceanControllerTest extends TestCase
         return [
             [-5, 0],
             [0, 0],
-            [10, 0.5],
-            [15, 0.75],
-            [20, 1],
+            [10, 0.4],
+            [15, 0.6],
+            [20, 0.8],
             [25, 1],
         ];
     }

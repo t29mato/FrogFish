@@ -1,4 +1,4 @@
 <?php
 return [
-    'TransparencyLevelMax' => 20,
+    'TransparencyLevelMax' => 25,
 ];
