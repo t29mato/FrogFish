@@ -203,7 +203,7 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_KUMOMI()
     {
         return [
-            ['/SampleHtml/Kumomi/2019-10-25.html', 'ocean.KUMOMI.PATTERNS', '12〜15m'],
+            ['/SampleHtml/Kumomi/2019-10-25.html', 'ocean.KUMOMI.PATTERNS', '12～15m'],
         ];
     }
 }

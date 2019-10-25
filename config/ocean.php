@@ -80,5 +80,18 @@ return [
             'top' => '35%',
             'left' => '10%',
         ]
+    ],
+    'KUMOMI' => [
+        'ID' => 7,
+        'URL' => 'http://kumomi-hamayu.com/sealogs/',
+        'NAME' => '雲見',
+        'PATTERNS' => [
+            '@<th class="rightTh">透視度:</th>([\s\S]*?)</td>@s',
+            '@<td>([\s\S]*?)</td>@',
+        ],
+        'CSS' => [
+            'top' => '72%',
+            'left' => '1%',
+        ]
     ]
 ];
