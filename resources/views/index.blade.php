@@ -16,7 +16,7 @@
       margin: 0;
       padding: 0;
       position: relative;
-      /* 相対位置指定 */
+      margin-bottom: 10px;
     }
 
     .photo img {
@@ -28,7 +28,7 @@
       text-align: center;
       padding: 0;
       color: #fff;
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 1.0);
       /* 帯の透明度 */
       position: absolute;
       /* 絶対位置指定 */
@@ -67,8 +67,8 @@
         <div class="photo">
           <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto-tiny.png') }}" />
           @foreach ($oceanFormated as $ocean)
-          <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip" title="{{ $ocean['name'] }}：{{ $ocean['updated_at'] }}">
-            <button class="text" style="pointer-events: none;" type="button" disabled>{{ $ocean['transparency'] }}</button>
+          <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip" title="{{ $ocean['updated_at'] }}">
+            <button class="text" style="pointer-events: none; background: rgba(2, 160, 233, {{ $ocean['transparencyLevel'] }})" type="button" disabled>{{ $ocean['name'] }} {{ $ocean['transparency'] }}</button>
           </span>
           @endforeach
         </div>
@@ -77,11 +77,14 @@
   </div>
   <footer class="bd-footer text-muted">
     <div class="row">
-      <div class="col-lg-6">
-        <p style="text-align: center;">更新のタイミング：15分おきに更新しています</p>
+      <div class="col-lg-6 offset-lg-3">
+        <p style="text-align: center;">
+          <span style="background: linear-gradient(to right, white, rgba(2, 160, 233, 1)); padding: 5px; color: black; border: 1px solid rgba(2, 160, 233, 1);">0m　5m　10m　15m　20m以上</span>
+        </p>
+        <p style="text-align: center;">更新のタイミング：15分おき（ポイントをタップで最終更新日時を確認できます）</p>
         <p style="text-align: center;">参照しているホームページ：
           @foreach ($oceanFormated as $ocean)
-          <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] }}　</a>
+          <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] }}</a>　
           @endforeach
         </p>
         <p></p>

@@ -16,7 +16,7 @@ class OceanController extends Controller
             array_push($oceanFormated, [
                 'name' => $ocean->name,
                 'transparency' => $ocean->transparency,
-                'transparencyInt' => $this->calculateTransparencyLevel(
+                'transparencyLevel' => $this->calculateTransparencyLevel(
                     $this->calculateTransparencyInt($ocean->transparency)
                 ),
                 'url' => $ocean->url,
