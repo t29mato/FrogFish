@@ -43,8 +43,8 @@ class OceanControllerTest extends TestCase
         return [
             ['-', 0],
             ['3〜8m', '6'],
-            // ['10m', '10'],
-            // ['10〜12m', '11'],
+            ['10〜12m', '11'],
+            ['10m', '10'],
         ];
     }
 }

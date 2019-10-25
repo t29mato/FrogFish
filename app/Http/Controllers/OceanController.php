@@ -41,6 +41,9 @@ class OceanController extends Controller
                 0,
                 PHP_ROUND_HALF_UP
             );
+        } else {
+            preg_match('!([0-9]+)m!', $transparency, $matches);
+            $result = intval($matches[1]);
         }
         return $result;
     }
