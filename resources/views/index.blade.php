@@ -41,6 +41,8 @@
 
     .text {
       color: black;
+      padding: 1px 3px;
+      border: none;
     }
   </style>
   <script>
