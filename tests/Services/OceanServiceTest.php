@@ -183,4 +183,27 @@ class OceanServiceTest extends TestCase
             ['/SampleHtml/Osezaki/2019-10-23.html', 'ocean.OSEZAKI.PATTERNS', '3～8m'],
         ];
     }
+
+    /**
+     * @dataProvider additionProviderポイント_KUMOMI
+     */
+    public function test_matchPatterns_KUMOMI($htmlPath, $patterns, $expected)
+    {
+        // PrivateメソッドをテストするためにReflection導入
+        // https://qiita.com/penton310/items/6b437061391016179631
+        $reflection = new \ReflectionClass($this->oceanService);
+        $matchPatternsFunction = $reflection->getMethod('matchPatterns');
+        $matchPatternsFunction->setAccessible(true);
+
+        $html = file_get_contents(__DIR__  . $htmlPath);
+        $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function additionProviderポイント_KUMOMI()
+    {
+        return [
+            ['/SampleHtml/Kumomi/2019-10-25.html', 'ocean.KUMOMI.PATTERNS', '12〜15m'],
+        ];
+    }
 }
