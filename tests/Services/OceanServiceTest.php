@@ -50,6 +50,17 @@ class OceanServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function additionProviderポイント_IWA()
+    {
+        return [
+            ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.IWA.PATTERNS', '5m'],
+            ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.IWA.PATTERNS', '8～10m'],
+            ['/SampleHtml/Iwa/2019-10-06.html', 'ocean.IWA.PATTERNS', '3～5m'],
+            ['/SampleHtml/Iwa/2019-10-07.html', 'ocean.IWA.PATTERNS', '3～5m'],
+            ['/SampleHtml/Iwa/2019-10-10.html', 'ocean.IWA.PATTERNS', '3m'],
+        ];
+    }
+
     /**
      * @dataProvider additionProviderポイント_KAWANA
      */
@@ -64,6 +75,17 @@ class OceanServiceTest extends TestCase
         $html = file_get_contents(__DIR__  . $htmlPath);
         $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
         $this->assertEquals($expected, $actual);
+    }
+
+    public function additionProviderポイント_KAWANA()
+    {
+        return [
+            ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
+            ['/SampleHtml/Kawana/2019-09-21.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
+            ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
+            ['/SampleHtml/Kawana/2019-10-07.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
+            ['/SampleHtml/Kawana/2019-10-11.html', 'ocean.KAWANA.PATTERNS', '-'],
+        ];
     }
 
     /**
@@ -82,6 +104,14 @@ class OceanServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function additionProviderポイント_FUTO()
+    {
+        return [
+            ['/SampleHtml/Futo/2019-10-13.html', 'ocean.FUTO.PATTERNS', '-'],
+            ['/SampleHtml/Futo/2019-10-19.html', 'ocean.FUTO.PATTERNS', '5〜8m'],
+        ];
+    }
+
     /**
      * @dataProvider additionProviderポイント_IOP
      */
@@ -96,6 +126,15 @@ class OceanServiceTest extends TestCase
         $html = file_get_contents(__DIR__  . $htmlPath);
         $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
         $this->assertEquals($expected, $actual);
+    }
+
+    public function additionProviderポイント_IOP()
+    {
+        return [
+            ['/SampleHtml/IOP/2019-10-01.html', 'ocean.IOP.PATTERNS', '10～15m'],
+            ['/SampleHtml/IOP/2019-10-13.html', 'ocean.IOP.PATTERNS', '-'],
+            ['/SampleHtml/IOP/2019-10-20.html', 'ocean.IOP.PATTERNS', '10m'],
+        ];
     }
 
     /**
@@ -114,6 +153,14 @@ class OceanServiceTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function additionProviderポイント_IZUOSHIMA()
+    {
+        return [
+            ['/SampleHtml/IzuOshima/2019-10-09.html', 'ocean.IZUOSHIMA.PATTERNS', '12～15m'],
+            ['/SampleHtml/IzuOshima/2019-10-13.html', 'ocean.IZUOSHIMA.PATTERNS', '15m'],
+        ];
+    }
+
     /**
      * @dataProvider additionProviderポイント_OSEZAKI
      */
@@ -128,53 +175,6 @@ class OceanServiceTest extends TestCase
         $html = file_get_contents(__DIR__  . $htmlPath);
         $actual = $matchPatternsFunction->invoke($this->oceanService, Config($patterns), $html);
         $this->assertEquals($expected, $actual);
-    }
-
-    public function additionProviderポイント_IWA()
-    {
-        return [
-            ['/SampleHtml/Iwa/2019-09-13.html', 'ocean.IWA.PATTERNS', '5m'],
-            ['/SampleHtml/Iwa/2019-09-20.html', 'ocean.IWA.PATTERNS', '8～10m'],
-            ['/SampleHtml/Iwa/2019-10-06.html', 'ocean.IWA.PATTERNS', '3～5m'],
-            ['/SampleHtml/Iwa/2019-10-07.html', 'ocean.IWA.PATTERNS', '3～5m'],
-            ['/SampleHtml/Iwa/2019-10-10.html', 'ocean.IWA.PATTERNS', '3m'],
-        ];
-    }
-
-    public function additionProviderポイント_KAWANA()
-    {
-        return [
-            ['/SampleHtml/Kawana/2019-09-20.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
-            ['/SampleHtml/Kawana/2019-09-21.html', 'ocean.KAWANA.PATTERNS', '8～10m'],
-            ['/SampleHtml/Kawana/2019-10-06.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
-            ['/SampleHtml/Kawana/2019-10-07.html', 'ocean.KAWANA.PATTERNS', '5～8m'],
-            ['/SampleHtml/Kawana/2019-10-11.html', 'ocean.KAWANA.PATTERNS', '-'],
-        ];
-    }
-
-    public function additionProviderポイント_FUTO()
-    {
-        return [
-            ['/SampleHtml/Futo/2019-10-13.html', 'ocean.FUTO.PATTERNS', '-'],
-            ['/SampleHtml/Futo/2019-10-19.html', 'ocean.FUTO.PATTERNS', '5〜8m'],
-        ];
-    }
-
-    public function additionProviderポイント_IOP()
-    {
-        return [
-            ['/SampleHtml/IOP/2019-10-01.html', 'ocean.IOP.PATTERNS', '10～15m'],
-            ['/SampleHtml/IOP/2019-10-13.html', 'ocean.IOP.PATTERNS', '-'],
-            ['/SampleHtml/IOP/2019-10-20.html', 'ocean.IOP.PATTERNS', '10m'],
-        ];
-    }
-
-    public function additionProviderポイント_IZUOSHIMA()
-    {
-        return [
-            ['/SampleHtml/IzuOshima/2019-10-09.html', 'ocean.IZUOSHIMA.PATTERNS', '12～15m'],
-            ['/SampleHtml/IzuOshima/2019-10-13.html', 'ocean.IZUOSHIMA.PATTERNS', '15m'],
-        ];
     }
 
     public function additionProviderポイント_OSEZAKI()
