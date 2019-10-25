@@ -16,6 +16,9 @@ class OceanController extends Controller
             array_push($oceanFormated, [
                 'name' => $ocean->name,
                 'transparency' => $ocean->transparency,
+                'transparencyInt' => $this->calculateTransparencyLevel(
+                    $this->calculateTransparencyInt($ocean->transparency)
+                ),
                 'url' => $ocean->url,
                 'updated_at' => $ocean->updated_at->format('m/d H:i'),
                 'css_top' => Config('ocean')[$ocean->key]['CSS']['top'],
@@ -46,5 +49,17 @@ class OceanController extends Controller
             $result = intval($matches[1]);
         }
         return $result;
+    }
+
+    private function calculateTransparencyLevel(int $transparency): float
+    {
+        $transparencyLevelMax = Config('const')['TransparencyLevelMax'];
+        if ($transparency >= $transparencyLevelMax) {
+            return 1;
+        } else if ($transparency <= 0) {
+            return 0;
+        } else {
+            return $transparency / $transparencyLevelMax;
+        }
     }
 }
