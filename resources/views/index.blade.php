@@ -83,7 +83,6 @@
         <p style="text-align: center;">
           <span style="background: linear-gradient(to right, white, rgba(2, 160, 233, 1)); padding: 5px; color: black; border: 1px solid rgba(2, 160, 233, 1);">0m　5m　10m　15m　20m　25m</span>
         </p>
-        <p style="text-align: center;">更新のタイミング：15分おき（ポイントをタップで最終更新日時を確認できます）</p>
         <p style="text-align: center;">参照しているホームページ：
           @foreach ($oceanFormated as $ocean)
           <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] }}</a>　

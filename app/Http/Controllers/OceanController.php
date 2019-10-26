@@ -13,6 +13,7 @@ class OceanController extends Controller
     {
         $oceans = Ocean::all();
         $oceanFormated = [];
+        $dtNow = new Carbon();
         foreach ($oceans as $index => $ocean) {
             array_push($oceanFormated, [
                 'name' => $ocean->nickname ? $ocean->nickname : $ocean->name,
@@ -21,7 +22,7 @@ class OceanController extends Controller
                     $this->calculateTransparencyInt($ocean->transparency)
                 ),
                 'url' => $ocean->url,
-                'updated_at' => $ocean->updated_at->format('m/d H:i'),
+                'updated_at' => $this->diffUpdateAt($ocean->updated_at, $dtNow),
                 'css_top' => Config('ocean')[$ocean->key]['CSS']['top'],
                 'css_left' => Config('ocean')[$ocean->key]['CSS']['left'],
             ]);
