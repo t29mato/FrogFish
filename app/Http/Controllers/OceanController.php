@@ -70,12 +70,14 @@ class OceanController extends Controller
         $diffInHours = $dtNow->diffInHours($dtUpdatedAt);
         $diffInDays = $dtNow->diffInDays($dtUpdatedAt);
 
+        $suffix = 'に更新';
+
         if ($diffInMinutes <= 60) {
-            return $diffInMinutes . '分前';
+            return $diffInMinutes . '分前' . $suffix;
         } else if ($diffInHours <= 24) {
-            return $diffInHours . '時間前';
+            return $diffInHours . '時間前' . $suffix;
         } else {
-            return $diffInDays . '日前';
+            return $diffInDays . '日前' . $suffix;
         }
     }
 }
