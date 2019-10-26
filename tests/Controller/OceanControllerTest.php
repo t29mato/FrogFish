@@ -83,16 +83,16 @@ class OceanControllerTest extends TestCase
      * 24時間以内なら時間で表示
      * それ以外は日数で表示
      */
-    public function test_最終更新日を時間に合わせて調整($transparency, $expected)
+    public function test_最終更新日を時間に合わせて調整($updatedAt, $expected)
     {
         $reflection = new \ReflectionClass($this->oceanController);
-        $trimUpdateAtFunction = $reflection->getMethod('trimUpdateAt');
-        $trimUpdateAtFunction->setAccessible(true);
+        $diffUpdateAtFunction = $reflection->getMethod('diffUpdateAt');
+        $diffUpdateAtFunction->setAccessible(true);
 
         $dtNow = new Carbon('2019-10-26 12:00:00.000000');
-        var_dump($dtNow);
+        $dtUpdatedAt = new Carbon($updatedAt);
 
-        $actual = $trimUpdateAtFunction->invoke($this->oceanController, $transparency);
+        $actual = $diffUpdateAtFunction->invoke($this->oceanController, $dtNow, $dtUpdatedAt);
         $this->assertEquals($expected, $actual);
     }
 

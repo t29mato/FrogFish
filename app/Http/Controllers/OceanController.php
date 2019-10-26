@@ -37,8 +37,8 @@ class OceanController extends Controller
         $result = 0;
         if ($transparency === '-') {
             $result = 0;
-        } else if (strpos($transparency, '〜') !== false) {
-            preg_match('!([0-9]+)〜([0-9]+)m!', $transparency, $matches);
+        } else if (strpos($transparency, 'ã€œ') !== false) {
+            preg_match('!([0-9]+)ã€œ([0-9]+)m!', $transparency, $matches);
             $result = round(
                 ((intval($matches[1]) + intval($matches[2])) / 2),
                 0,
@@ -60,6 +60,21 @@ class OceanController extends Controller
             return 0;
         } else {
             return $transparency / $transparencyLevelMax;
+        }
+    }
+
+    private function diffUpdateAt(Carbon $dtUpdatedAt, Carbon $dtNow): string
+    {
+        $diffInMinutes = $dtNow->diffInMinutes($dtUpdatedAt);
+        $diffInHours = $dtNow->diffInHours($dtUpdatedAt);
+        $diffInDays = $dtNow->diffInDays($dtUpdatedAt);
+
+        if ($diffInMinutes <= 60) {
+            return $diffInMinutes . '分前';
+        } else if ($diffInHours <= 24) {
+            return $diffInHours . '時間前';
+        } else {
+            return $diffInDays . '日前';
         }
     }
 }
