@@ -226,7 +226,7 @@ class OceanServiceTest extends TestCase
     public function additionProviderポイント_MIKOMOTO()
     {
         return [
-            ['/SampleHtml/Mikomoto/2019-10-26.html', 'ocean.Mikomoto.patterns', '15m'],
+            ['/SampleHtml/Mikomoto/2019-10-26.html', 'ocean.Mikomoto.patterns', '12m'],
         ];
     }
 }

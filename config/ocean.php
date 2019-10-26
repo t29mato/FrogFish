@@ -95,5 +95,18 @@ return [
             'top' => '72%',
             'left' => '1%',
         ]
+    ],
+    'Mikomoto' => [
+        'ID' => 8,
+        'URL' => 'http://www.mikomoto.com/logs/',
+        'name' => '神子元島',
+        'patterns' => [
+            '@<th>透視度<br>([\s\S]*?)</tr>@s',
+            '@<td>([\s\S]*?)</td>@',
+        ],
+        'CSS' => [
+            'top' => '93%',
+            'left' => '33%',
+        ]
     ]
 ];
