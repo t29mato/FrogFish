@@ -109,6 +109,7 @@ class OceanServiceTest extends TestCase
         return [
             ['/SampleHtml/Futo/2019-10-13.html', 'ocean.Futo.patterns', '-'],
             ['/SampleHtml/Futo/2019-10-19.html', 'ocean.Futo.patterns', '5〜8m'],
+            ['/SampleHtml/Futo/2019-10-27.html', 'ocean.Futo.patterns', '〜8m'],
         ];
     }
 
