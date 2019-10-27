@@ -33,7 +33,7 @@ return [
         'name' => '富戸',
         'patterns' => [
             '@<td nowrap>ビーチ</td>([\s\S]*?)</td></tr>@',
-            '@<td nowrap>[0-9]([\s\S]*?)</td></tr>@',
+            '@<td>：</td>([\s\S]*?)</td></tr>@',
             '@<td nowrap>([\s\S]*?)</td></tr>@',
         ],
         'characterCode' => 'sjis',

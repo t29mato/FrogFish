@@ -95,6 +95,7 @@ class OceanService implements OceanServiceInterface
         // 正規表現の数だけ文字を抽出する
         foreach ($patterns as $key => $pattern) {
             preg_match($pattern, $subject, $matches);
+            var_dump($matches);
             if (isset($matches[0])) {
                 $subject = $matches[0];
             }
