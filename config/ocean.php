@@ -5,8 +5,8 @@ return [
         'URL' => 'http://iwadive.divingnavi.info/',
         'name' => '岩',
         'patterns' => [
-            '@岩の今日の海況([\s\S]*?)</table>@',
-            '@透視度([\s\S]*?)<br />@',
+            '!岩の今日の海況([\s\S]*?)</table>!',
+            '!透視度([\s\S]*?)<br />!',
         ],
         'characterCode' => 'sjis',
         'CSS' => [
@@ -19,7 +19,7 @@ return [
         'URL' => 'http://www.izu-ito.jp/kawana/info.html',
         'name' => '川奈',
         'patterns' => [
-            '@ビーチ ： ([\s\S]*?)br@',
+            '!ビーチ ： ([\s\S]*?)br!',
         ],
         'characterCode' => 'sjis',
         'CSS' => [
@@ -32,9 +32,9 @@ return [
         'URL' => 'http://www.izu-ito.jp/futo/info.html',
         'name' => '富戸',
         'patterns' => [
-            '@<td nowrap>ビーチ</td>([\s\S]*?)</td></tr>@',
-            '@<td>：</td>([\s\S]*?)</td></tr>@',
-            '@<td nowrap>([\s\S]*?)</td></tr>@',
+            '!<td nowrap>ビーチ</td>([\s\S]*?)</td></tr>!',
+            '!<td>：</td>([\s\S]*?)</td></tr>!',
+            '!<td nowrap>([\s\S]*?)</td></tr>!',
         ],
         'characterCode' => 'sjis',
         'CSS' => [
@@ -48,8 +48,8 @@ return [
         'name' => '伊豆海洋公園',
         'nickname' => 'IOP',
         'patterns' => [
-            '@<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>@',
-            '@　([\s\S]*?)</dd>@',
+            '!<dt><h4>透視度</h4></dt><dd>([\s\S]*?)</dd>!',
+            '!　([\s\S]*?)</dd>!',
         ],
         'CSS' => [
             'top' => '59%',
@@ -62,8 +62,8 @@ return [
         'name' => '伊豆大島',
         'nickname' => '大島',
         'patterns' => [
-            '@<div class="contenttext">([\s\S]*?)ｍ@s',
-            '@透明度([\s\S]*?)$@s',
+            '!<div class="contenttext">([\s\S]*?)ｍ!s',
+            '!透明度([\s\S]*?)$!s',
         ],
         'CSS' => [
             'top' => '71%',
@@ -75,8 +75,8 @@ return [
         'URL' => 'http://www.cocomo-ds.net/p4-1.html',
         'name' => '大瀬崎',
         'patterns' => [
-            '@<b>透視度</b>([\s\S]*?)<td><b>気温</b></td>@s',
-            '@<td>([\s\S]*?)</td>@',
+            '!<b>透視度</b>([\s\S]*?)<td><b>気温</b></td>!s',
+            '!<td>([\s\S]*?)</td>!',
         ],
         'CSS' => [
             'top' => '35%',
@@ -88,8 +88,8 @@ return [
         'URL' => 'http://kumomi-hamayu.com/sealogs/',
         'name' => '雲見',
         'patterns' => [
-            '@<th class="rightTh">透視度:</th>([\s\S]*?)</td>@s',
-            '@<td>([\s\S]*?)</td>@',
+            '!<th class="rightTh">透視度:</th>([\s\S]*?)</td>!s',
+            '!<td>([\s\S]*?)</td>!',
         ],
         'CSS' => [
             'top' => '72%',
@@ -101,8 +101,8 @@ return [
         'URL' => 'http://www.mikomoto.com/logs/',
         'name' => '神子元島',
         'patterns' => [
-            '@<th>透視度<br>([\s\S]*?)</tr>@s',
-            '@<td>([\s\S]*?)</td>@',
+            '!<th>透視度<br>([\s\S]*?)</tr>!s',
+            '!<td>([\s\S]*?)</td>!',
         ],
         'CSS' => [
             'top' => '93%',
