@@ -4,6 +4,7 @@ LABEL maintainer "t2kmato"
 ARG TZ
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
+ENV TZ Japan
 
 RUN set -eux && \
   apk add --update-cache --no-cache --virtual=.build-dependencies tzdata && \
