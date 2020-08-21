@@ -62,11 +62,6 @@
       border: none;
     }
   </style>
-  <script>
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  </script>
 
 </head>
 
@@ -89,7 +84,7 @@
         <div class="photo">
           <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto-tiny.png') }}" />
           @foreach ($oceanFormated as $ocean)
-          <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip" title="{{ $ocean['updated_at'] }}">
+          <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0">
             <a href="{{ '/oceans/' . $ocean['id'] }}">
               <button class="text" style="pointer-events: none; background: rgba(2, 160, 233, {{ $ocean['transparencyLevel'] }})" type="button" disabled>{{ $ocean['name'] }} {{ $ocean['transparency'] }}</button>
             </a>
@@ -105,9 +100,9 @@
         <p style="text-align: center;">
           <span style="background: linear-gradient(to right, white, rgba(2, 160, 233, 1)); padding: 5px; color: black; border: 1px solid rgba(2, 160, 233, 1);">0m　5m　10m　15m　20m　25m</span>
         </p>
-        <p style="text-align: center;">参照しているホームページ：
+        <p style="text-align: center;">参照しているホームページ<br>
           @foreach ($oceanFormated as $ocean)
-          <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] }}</a>　
+          <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] . ' (' . $ocean['updated_at'] . ')' }}</a><br>
           @endforeach
         </p>
         <p></p>
