@@ -74,27 +74,31 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 offset-lg-3">
-        <h2>伊豆半島周辺の透明度マップ
-          @if ($environment === 'local')
-          （ローカル環境）
-          @elseif ($environment === 'develop')
-          （開発環境）
-          @else
-          {{-- Production --}}
-          @endif
-        </h2>
-        <div class="alert alert-primary" role="alert">
-          2020年8月22日更新! ポイントクリックで過去の透明度履歴が閲覧できます。
-        </div>
-        <div class="photo">
-          <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto-tiny.png') }}" />
-          @foreach ($oceanFormated as $ocean)
-          <span class="background d-inline-block" style="top: {{ $ocean['css_top'] }}; left: {{ $ocean['css_left'] }}" tabindex="0" data-toggle="tooltip" title="{{ $ocean['updated_at'] }}">
-            <a href="{{ '/oceans/' . $ocean['id'] }}">
-              <button class="text" style="pointer-events: none; background: rgba(2, 160, 233, {{ $ocean['transparencyLevel'] }})" type="button" disabled>{{ $ocean['name'] }} {{ $ocean['transparency'] }}</button>
-            </a>
-          </span>
-          @endforeach
+        <p><a href="/">トップに戻る</a></p>
+        <h2>ダイビングポイント「{{ $oceans[0]->name }}」の透明度履歴</h2>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">年</th>
+                <th scope="col">月</th>
+                <th scope="col">日</th>
+                <th scope="col">曜日</th>
+                <th scope="col">透明度</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($oceans as $ocean)
+                <tr>
+                  <td>{{ $ocean->created_at->format('Y') }}</td>
+                  <td>{{ $ocean->created_at->format('n') }}</td>
+                  <td>{{ $ocean->created_at->format('j') }}</td>
+                  <td>{{ $ocean->created_at->format('D') }}</td>
+                  <td>{{ $ocean->transparency }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -102,15 +106,6 @@
   <footer class="bd-footer text-muted">
     <div class="row">
       <div class="col-lg-6 offset-lg-3">
-        <p style="text-align: center;">
-          <span style="background: linear-gradient(to right, white, rgba(2, 160, 233, 1)); padding: 5px; color: black; border: 1px solid rgba(2, 160, 233, 1);">0m　5m　10m　15m　20m　25m</span>
-        </p>
-        <p style="text-align: center;">参照しているホームページ：
-          @foreach ($oceanFormated as $ocean)
-          <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] }}</a>　
-          @endforeach
-        </p>
-        <p></p>
         <p style="text-align: center;">お問い合わせ先：<a href="https://twitter.com/umineco2019" target="_blank" rel="noopener">@umineco2019</a></p>
       </div>
     </div>
