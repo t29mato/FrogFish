@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'OceanController@index');
+Route::get('/oceans/{ocean_id}', 'OceanController@ocean');

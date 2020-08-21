@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ocean;
+use App\OceanHistory;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 class OceanController extends Controller
 {
@@ -16,6 +18,7 @@ class OceanController extends Controller
         $dtNow = new Carbon();
         foreach ($oceans as $index => $ocean) {
             array_push($oceanFormated, [
+                'id' => $ocean->id,
                 'name' => $ocean->nickname ? $ocean->nickname : $ocean->name,
                 'transparency' => $ocean->transparency,
                 'transparencyLevel' => $this->calculateTransparencyLevel(
@@ -31,6 +34,24 @@ class OceanController extends Controller
         return view('index', [
             'oceanFormated' => $oceanFormated,
             'environment' => App::environment()
+        ]);
+    }
+
+    public function ocean($ocean_id)
+    {
+        $now = new Carbon();
+        $oceans = OceanHistory::where('ocean_histories.ocean_id', '=', $ocean_id)
+            ->where('ocean_histories.created_at', '>', $now->subYear()->format('Y-m-d'))
+            ->join('oceans', 'ocean_id', '=', 'oceans.id')
+            ->select('oceans.name', 'ocean_histories.transparency', 'oceans.id', 'ocean_histories.created_at')
+            ->orderBy('ocean_histories.created_at', 'desc')
+            ->get();
+        foreach ($oceans as $index => $ocean) {
+            // var_dump($ocean->name, $ocean->transparency, $ocean->created_at->format('Y-m-d'));
+            // var_dump($ocean->created_at->format('Y-m-d') . ': ' . $ocean->transparency . '<br>');
+        }
+        return view('ocean', [
+            'oceans' => $oceans
         ]);
     }
 

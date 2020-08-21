@@ -12,7 +12,6 @@ services:
     working_dir: /work
     environment:
       - DB_CONNECTION=sqlite
-      - TZ=${TZ}
 
   web:
     image: nginx:1.17-alpine
