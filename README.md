@@ -9,6 +9,8 @@ $ docker-compose up --build
 $ docker-compose exec app composer install
 $ touch database/database.sqlite
 $ docker-compose exec app php artisan migrate
+$ cp .env.example .env
+$ docker-compose exec app php artisan key:generate
 ```
 
 ## cron設定
