@@ -13,7 +13,9 @@ class OceanController extends Controller
 {
     public function index()
     {
-        $oceans = Ocean::all();
+        $oceans = Ocean::all()->filter(function ($ocean) {
+            return $ocean->key === 'Iwa' || $ocean->key === 'Futo';
+        });
         $oceanFormated = [];
         $dtNow = new Carbon();
         foreach ($oceans as $index => $ocean) {
