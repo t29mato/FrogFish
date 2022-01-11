@@ -79,9 +79,6 @@
           {{-- Production --}}
           @endif
         </h2>
-        <div class="alert alert-primary" role="alert">
-          2020年8月22日更新! ポイントクリックで過去の透明度履歴が閲覧できます。
-        </div>
         <div class="photo">
           <img class="img" style="border: 5px solid black" src="{{ asset('images/izu-hanto-tiny.png') }}" />
           @foreach ($oceanFormated as $ocean)
@@ -101,6 +98,11 @@
         <p style="text-align: center;">
           <span style="background: linear-gradient(to right, white, rgba(2, 160, 233, 1)); padding: 5px; color: black; border: 1px solid rgba(2, 160, 233, 1);">0m　5m　10m　15m　20m　25m</span>
         </p>
+        <div class="alert alert-primary" role="alert">
+          [NEWS]<br>
+          2020年8月22日 ポイント名クリックで過去の透明度を履歴できるように変更。<br>
+          2021年1月11日 参照先のHPの構造が変更されていたもののクローリングし続けるのが困難になったため開発者の気になるポイントの岩と富戸だけ取得・表示するように変更。
+        </div>
         <p style="text-align: center;">参照しているホームページ<br>
           @foreach ($oceanFormated as $ocean)
           <a href="{{ $ocean['url'] }}" target="_blank">{{ $ocean['name'] . ' (' . $ocean['updated_at'] . ')' }}</a><br>
