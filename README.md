@@ -43,4 +43,4 @@ $ php artisan oceanService:execute
 ```
 
 # 開発環境
-http://3.114.115.73
+http://frogfish.umineco.me/
