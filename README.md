@@ -41,6 +41,3 @@ $ phpunit
 ```
 $ php artisan oceanService:execute
 ```
-
-# 開発環境
-http://frogfish.umineco.me/
