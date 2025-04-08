@@ -26,13 +26,7 @@ $ docker-compose exec app ash
 */15    *       *       *       *       php /work/artisan oceanService:execute
 ```
 
-## トラブルシュート
-### storage配下がPermission Deniedになる時
-```
-$ chmod -R 777 logs
-$ chmod -R 777 storage/logs
-$ chmod -R 777 storage/framework
-```
+
 
 # テスト
 ```
